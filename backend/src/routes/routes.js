@@ -1,10 +1,37 @@
 import express from "express";
 import Comment_model from "../model/comments.js";
+import Post_model from "../model/Posts.js";
 
 // import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
+
+// auth create  Blog post
+
+router.post("/blogs/createPost", async (req, res) => {
+  const { author, titles, description, post } = req.body;
+    try {
+      const post = await Post_model.create({ author, titles, description, post });
+      res.status(201).json({ post });
+    }
+    catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+});
+
+
+// get all Blog post
+
+router.get("/blogs/getAllPost", async (req, res) => {
+  try {
+    const posts = await Post_model.find();
+    res.status(200).json({posts });
+  }
+  catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+});
 
 
 // auth create comment post
