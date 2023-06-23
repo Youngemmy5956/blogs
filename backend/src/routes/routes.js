@@ -1,6 +1,6 @@
 import express from "express";
 import Comment_model from "../model/comments.js";
-import Post_model from "../model/Posts.js";
+import Post_model from "../model/posts.js",
 
 // import auth from "../middleware/auth.js";
 
