@@ -1,5 +1,5 @@
 import express from "express";
-import Blog_model from "../model/blogs.js";
+import Comment_model from "../model/comments.js";
 
 // import auth from "../middleware/auth.js";
 
@@ -7,13 +7,13 @@ const router = express.Router();
 
 
 
-// auth create blog post
+// auth create comment post
 
-router.post("/blogs/createPost", async (req, res) => {
+router.post("/blogs/createComment", async (req, res) => {
   const { name, upvotes, comments } = req.body;
     try {
-      const blog = await Blog_model.create({ name, upvotes, comments });
-      res.status(201).json({ blog });
+      const comment = await Comment_model.create({ name, upvotes, comments });
+      res.status(201).json({ comment });
     }
     catch (err) {
       res.status(400).json({ message: err.message });
@@ -21,12 +21,12 @@ router.post("/blogs/createPost", async (req, res) => {
 });
 
 
-// get all blogs post
+// get all comments post
 
-router.get("/blogs/getAllPost", async (req, res) => {
+router.get("/blogs/getAllComment", async (req, res) => {
   try {
-    const blogs = await Blog_model.find();
-    res.status(200).json({ blogs });
+    const comments = await Comment_model.find();
+    res.status(200).json({comments });
   }
   catch (err) {
     res.status(404).json({ message: err.message });
@@ -34,53 +34,53 @@ router.get("/blogs/getAllPost", async (req, res) => {
 });
 
 
-// get single blog post
+// get single comment post
 
-router.get("/blogs/getSinglePost/:id", async (req, res) => {
+router.get("/blogs/getSingleComment/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await Blog_model.findById(id).then((blogs) => {
-      res.status(201).json({ message: "blog successfully listed", blogs });
+    await Comment_model.findById(id).then((comments) => {
+      res.status(201).json({ message: "comment successfully listed", comments });
     });
   } catch (err) {
     res.status(400).json({
-      message: "blog not successfully listed",
+      message: "comment not successfully listed",
       error: err.message,
     });
   }
 });
 
-// update blog post
+// update comment post
 
-router.put("/blogs/updatePost/:id", async (req, res) => {
+router.put("/blogs/updateComment/:id", async (req, res) => {
   const { id } = req.params;
   const { name, upvotes, comments } = req.body;
   try {
-    await Blog_model.findByIdAndUpdate(id, { name, upvotes, comments }).then(
-      (blogs) => {
-        res.status(201).json({ message: "blog successfully updated", blogs });
+    await Comment_model.findByIdAndUpdate(id, { name, upvotes, comments }).then(
+      (comments) => {
+        res.status(201).json({ message: "comment successfully updated", comments });
       }
     );
   } catch (err) {
     res.status(400).json({
-      message: "blog not successfully updated",
+      message: "comment not successfully updated",
       error: err.message,
     });
   }
 });
 
 
-// delete blog post
+// delete comment post
 
-router.delete("/blogs/deletePost/:id", async (req, res) => {
+router.delete("/blogs/deleteComment/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await Blog_model.findByIdAndDelete(id).then((blogs) => {
-      res.status(201).json({ message: "blog successfully deleted", blogs });
+    await Comment_model.findByIdAndDelete(id).then((comments) => {
+      res.status(201).json({ message: "comment successfully deleted", comments });
     });
   } catch (err) {
     res.status(400).json({
-      message: "blog not successfully deleted",
+      message: "comment not successfully deleted",
       error: err.message,
     });
   }
