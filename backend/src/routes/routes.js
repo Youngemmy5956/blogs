@@ -33,6 +33,58 @@ router.get("/blogs/getAllPost", async (req, res) => {
   }
 });
 
+// get single Blog post
+
+router.get("/blogs/getSinglePost/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Post_model.findById(id).then((post) => {
+      res.status(201).json({ message: "post successfully listed", post });
+    });
+  } catch (err) {
+    res.status(400).json({
+      message: "post not successfully listed",
+      error: err.message,
+    });
+  }
+});
+
+// update Blog post
+
+router.put("/blogs/updatePost/:id", async (req, res) => {
+  const { id } = req.params;
+  const { author, titles, description, post } = req.body;
+  try {
+     await  Post_model.findByIdAndUpdate(id, { author, titles, description, post }).then((post) => {
+      res.status(201).json({ message: "post successfully updated", post });
+    });
+  } catch (err) {
+    res.status(400).json({
+      message: "post not successfully updated",
+      error: err.message,
+    });
+  }
+});
+
+// delete Blog post
+
+router.delete("/blogs/deletePost/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Post_model.findByIdAndDelete(id).then((post) => {
+      res.status(201).json({ message: "post successfully deleted", post });
+    });
+  } catch (err) {
+    res.status(400).json({
+      message: "post not successfully deleted",
+      error: err.message,
+    });
+  }
+});
+
+  
+
 
 // auth create comment post
 
