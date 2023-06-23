@@ -4,7 +4,7 @@ const PostSchema = mongoose.Schema({
     author: { type: String, required: true },
     titles: { type: String, required: true },
     description: [{ type: String, required: true }],
-    post : { type: String, required: true },
+    posts : { type: String, required: true },
    
 });
 

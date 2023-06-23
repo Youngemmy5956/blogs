@@ -10,9 +10,9 @@ const router = express.Router();
 // auth create  Blog post
 
 router.post("/blogs/createPost", async (req, res) => {
-  const { author, titles, description, post } = req.body;
+  const { author, titles, description,  posts } = req.body;
     try {
-      const post = await Post_model.create({ author, titles, description, post });
+      const post = await Post_model.create({ author, titles, description,  posts });
       res.status(201).json({ post });
     }
     catch (err) {
