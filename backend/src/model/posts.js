@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
 const PostSchema = mongoose.Schema({
-    name: { type: String, required: true },
-    upvotes: { type: Number, required: true },
-    comments: [{ type: String, required: true }]
+    author: { type: String, required: true },
+    titles: { type: String, required: true },
+    description: [{ type: String, required: true }],
+    post : { type: String, required: true },
    
 });
 
