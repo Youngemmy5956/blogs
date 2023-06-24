@@ -4,7 +4,6 @@ import Post_model from "../model/posts.js"
 import User_model from "../model/users.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { Model } from "mongoose";
 
 // import auth from "../middleware/auth.js";
 
