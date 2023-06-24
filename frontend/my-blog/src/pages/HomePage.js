@@ -25,6 +25,12 @@ const HomePage = () => (
         interdum, nibh elit congue tellus, ac vulputate urna lorem nec nisi. Morbi id 
         consequat quam. Vivamus accumsan dui in facilisis aliquet.,
     </p>
+
+    <div className="w-[171px] h-[50px] relative">
+    <div className="left-[121px] top-[25px] absolute text-right text-white text-[20.85291862487793px] font-normal leading-normal">Emmy</div>
+    <div className="left-[0px] top-[0px] absolute text-center text-white text-[30.566238403320312px] font-normal leading-loose">Daily Listen</div>
+    <div className="left-[77px] top-[24px] absolute text-center text-white text-[16px] font-medium leading-normal">with</div>
+</div>
     </>
 );
 
