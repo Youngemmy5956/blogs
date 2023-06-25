@@ -6,6 +6,9 @@ const PostSchema = mongoose.Schema({
     description: [{ type: String, required: true }],
     posts : { type: String, required: true },
     date : { type: Date, default: Date.now },
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Likes" }],
+    
+
    
 });
 
