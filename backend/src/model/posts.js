@@ -6,7 +6,6 @@ const PostSchema = mongoose.Schema({
     description: [{ type: String, required: true }],
     posts : { type: String, required: true },
     date : { type: Date, default: Date.now },
-    TimeRanges: { type: String, required: true },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Likes" }],
     
 
